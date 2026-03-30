@@ -1,0 +1,23 @@
+ktor:
+  deployment:
+    port: 8080
+    host: 0.0.0.0
+  application:
+    modules:
+      - com.shop.ApplicationKt.module
+
+app:
+  jwt:
+    secret: dev-secret-change-me-min-32-chars
+    issuer: shop-api
+    audience: shop-users
+    realm: "Shop API"
+  admin:
+    email: admin@shop.local
+    password: admin123
+
+# Встроенная H2 in-memory (режим совместимости с PostgreSQL). Docker не нужен.
+database:
+  jdbcUrl: "jdbc:h2:mem:shop;DB_CLOSE_DELAY=-1;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE"
+  user: sa
+  password: ""
